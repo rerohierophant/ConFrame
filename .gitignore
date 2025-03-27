@@ -44,3 +44,4 @@ tmp/
 temp/
 .DS_Store
 Thumbs.db
+_pycache_
