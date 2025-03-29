@@ -17,7 +17,8 @@ module.exports = {
         'Color-Palette-Dark-White': '#FFFFFF',
         'Typography-Dark-Base-Primary-Gray-1': '#E3E3E3',
         'Typography-Dark-Base-Secondary-Gray-2': '#B8C0CC',
-        'Typography-Dark-Highlight-Primary': '#7B57E0'
+        'Typography-Dark-Highlight-Primary': '#7B57E0',
+        'Typography-Light-Base-Primary': '#2B2E48'
       },
       screens: {
         'sm': '640px',
