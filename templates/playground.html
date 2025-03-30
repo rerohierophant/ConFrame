@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>网页拖拽截图</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    padding: 20px;
+  }
+  button {
+    padding: 10px 20px;
+    font-size: 16px;
+    margin: 10px;
+    cursor: pointer;
+  }
+
+  /* 截图选框 */
+  #selection-box {
+    position: absolute;
+    border: 2px dashed #4CAF50;
+    background: rgba(76, 175, 80, 0.2);
+    display: none;
+    z-index: 9999;
+    pointer-events: none;
+  }
+
+  /* 截图预览容器 */
+  #screenshot-container {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    background: white;
+    box-shadow: 0 0 15px rgba(0,0,0,0.3);
+    padding: 20px;
+    border-radius: 8px;
+  }
+
+  #screenshot-container img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  #overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 999;
+  }
+</style>
+</head>
+<body>
+
+<h1>网页拖拽截图示例</h1>
+<button id="start-btn">截图</button>
+
+<div id="overlay"></div>
+<div id="selection-box"></div>
+
+<div id="screenshot-container">
+  <h2>截图预览</h2>
+  <img id="screenshot-preview" alt="截图预览">
+  <div style="text-align: center; margin-top: 10px;">
+    <button id="save-btn">保存图片</button>
+    <button id="cancel-btn">取消</button>
+  </div>
+</div>
+
+<script>
+    const startBtn = document.getElementById('start-btn');
+const overlay = document.getElementById('overlay');
+const selectionBox = document.getElementById('selection-box');
+const screenshotContainer = document.getElementById('screenshot-container');
+const screenshotPreview = document.getElementById('screenshot-preview');
+const saveBtn = document.getElementById('save-btn');
+const cancelBtn = document.getElementById('cancel-btn');
+
+let startX, startY, endX, endY;
+let isDragging = false;
+
+// 🌟【1】启用截图模式
+startBtn.addEventListener('click', () => {
+  overlay.style.display = 'block'; 
+  selectionBox.style.display = 'none'; 
+  document.body.style.cursor = 'crosshair';
+
+  // 监听拖拽事件
+  document.addEventListener('mousedown', onMouseDown);
+  document.addEventListener('mousemove', onMouseMove);
+  document.addEventListener('mouseup', onMouseUp);
+});
+
+// 🌟【2】鼠标按下 - 开始拖拽
+function onMouseDown(e) {
+  isDragging = true;
+  startX = e.clientX;
+  startY = e.clientY;
+
+  selectionBox.style.left = `${startX}px`;
+  selectionBox.style.top = `${startY}px`;
+  selectionBox.style.width = `0`;
+  selectionBox.style.height = `0`;
+  selectionBox.style.display = 'block';
+}
+
+// 🌟【3】鼠标移动 - 调整选框
+function onMouseMove(e) {
+  if (!isDragging) return;
+
+  endX = e.clientX;
+  endY = e.clientY;
+
+  const width = Math.abs(endX - startX);
+  const height = Math.abs(endY - startY);
+
+  selectionBox.style.width = `${width}px`;
+  selectionBox.style.height = `${height}px`;
+  selectionBox.style.left = `${Math.min(startX, endX)}px`;
+  selectionBox.style.top = `${Math.min(startY, endY)}px`;
+}
+
+// 🌟【4】鼠标释放 - 截图选区
+function onMouseUp() {
+  isDragging = false;
+  document.body.style.cursor = 'default';
+
+  // 解除事件监听
+  document.removeEventListener('mousedown', onMouseDown);
+  document.removeEventListener('mousemove', onMouseMove);
+  document.removeEventListener('mouseup', onMouseUp);
+
+  // 页面整体截图
+  html2canvas(document.body, { scale: 2 }).then(canvas => {
+    const rect = selectionBox.getBoundingClientRect();
+
+    // 裁剪选区
+    const croppedCanvas = document.createElement('canvas');
+    const ctx = croppedCanvas.getContext('2d');
+    croppedCanvas.width = rect.width * 2;  // 高分辨率
+    croppedCanvas.height = rect.height * 2;
+
+    ctx.drawImage(
+      canvas,
+      rect.left * 2, rect.top * 2,          // 裁剪起点（放大2倍以保证清晰度）
+      rect.width * 2, rect.height * 2,       // 裁剪尺寸
+      0, 0,
+      croppedCanvas.width, croppedCanvas.height
+    );
+
+    // 将裁剪好的截图显示在预览区
+    screenshotPreview.src = croppedCanvas.toDataURL('image/png');
+    screenshotContainer.style.display = 'block';
+    overlay.style.display = 'none';
+    selectionBox.style.display = 'none';
+  });
+}
+
+// 🌟【5】保存图片
+saveBtn.addEventListener('click', () => {
+  const link = document.createElement('a');
+  link.href = screenshotPreview.src;
+  link.download = `screenshot_${Date.now()}.png`;
+  link.click();
+  screenshotContainer.style.display = 'none';
+});
+
+// 🌟【6】取消截图
+cancelBtn.addEventListener('click', () => {
+  screenshotContainer.style.display = 'none';
+});
+
+</script>
+
+</body>
+</html>

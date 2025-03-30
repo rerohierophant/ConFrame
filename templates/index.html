@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="../static/css/output.css" rel="stylesheet">
+  <title>index</title>
 </head>
 
 <body>
@@ -346,7 +347,7 @@
         <!-- 项目列表 -->
         <div class="self-stretch inline-flex justify-start items-start gap-8 flex-wrap content-start">
           <!-- 新建项目卡片 -->
-          <addnew class="w-[465px] h-[356px] rounded-lg outline-dashed outline-[5px] outline-offset-[-5px] outline-Color-Palette-Dark-Dash inline-flex flex-col justify-center items-center gap-4 group transition-all duration-300 hover:outline-Color-Palette-Dark-Purpure">
+          <button id="newProjectBtn2" class="w-[465px] h-[356px] rounded-lg outline-dashed outline-[5px] outline-offset-[-5px] outline-Color-Palette-Dark-Dash inline-flex flex-col justify-center items-center gap-4 group transition-all duration-300 hover:outline-Color-Palette-Dark-Purpure">
             <icon class="w-14 h-14 relative">
               <svg xmlns="http://www.w3.org/2000/svg" width="55" height="54" viewBox="0 0 55 54" fill="none">
                 <path d="M7.25 27H47.75" class="stroke-[#E3E3E3] stroke-[4px] stroke-linecap-round stroke-linejoin-round group-hover:stroke-Color-Palette-Dark-Purpure transition-all duration-300"/>
@@ -356,7 +357,7 @@
             <div class="justify-start text-Typography-Dark-Base-Primary-Gray-1 text-xl font-semibold font-['PingFang_SC'] leading-normal group-hover:text-Color-Palette-Dark-Purpure transition-colors duration-300">
               创建新项目
             </div>
-          </addnew>
+          </button>
           
 
           <!-- 项目卡片 -->
@@ -401,6 +402,7 @@
     // 获取DOM元素
     const modal = document.getElementById('newProjectModal');
     const openModalBtn = document.getElementById('newProjectBtn');
+    const openModalBtn2 = document.getElementById('newProjectBtn2'); // 新增对第二个按钮的引用
     const closeModalBtn = document.getElementById('closeModal');
     const cancelBtn = document.getElementById('cancelButton');
     const modalOverlay = document.getElementById('modalOverlay');
@@ -435,6 +437,7 @@
 
     // 添加事件监听器
     openModalBtn.addEventListener('click', openModal);
+    openModalBtn2.addEventListener('click', openModal); // 为第二个按钮添加事件监听器
     closeModalBtn.addEventListener('click', closeModal);
     cancelBtn.addEventListener('click', closeModal);
     modalOverlay.addEventListener('click', closeModal);

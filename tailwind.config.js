@@ -18,7 +18,8 @@ module.exports = {
         'Typography-Dark-Base-Primary-Gray-1': '#E3E3E3',
         'Typography-Dark-Base-Secondary-Gray-2': '#B8C0CC',
         'Typography-Dark-Highlight-Primary': '#7B57E0',
-        'Typography-Light-Base-Primary': '#2B2E48'
+        'Typography-Light-Base-Primary': '#2B2E48',
+        'Typography-Dark-Success': '#2AA31F'
       },
       screens: {
         'sm': '640px',

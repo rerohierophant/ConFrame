@@ -17,5 +17,11 @@ def create_project():
     
     return redirect(url_for('index'))
 
+@app.route('/storyboard', methods=['GET', 'POST'])
+def storyboard():
+    return render_template('storyboard-edit.html')
+
+
+
 if __name__ == '__main__':
     app.run(debug=True)
