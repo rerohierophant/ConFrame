@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>storyboard-display</title>
+    <title>panorama</title>
     <link href="../static/css/output.css" rel="stylesheet">
 	<link rel="stylesheet" href="../static/css/index.min.css" />
 </head>
@@ -58,22 +58,26 @@
 		</div>
 	</div>
 	<!-- 定义模块导入映射，指定各模块的加载路径 -->
+
 	<script type="importmap">
-		{
+    {
 			"imports": {
-				"three": "https://cdn.jsdelivr.net/npm/three/build/three.module.js",
-				"@photo-sphere-viewer/core": "https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/core/index.module.js"
+					"three": "https://cdn.jsdelivr.net/npm/three/build/three.module.js",
+					"@photo-sphere-viewer/core": "https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/core/index.module.js"
 			}
-		}
+    }
 	</script>
-	
+
 	<script type="module">
 		import { Viewer } from '@photo-sphere-viewer/core';
-	
+
 		const viewer = new Viewer({
-			container: document.querySelector('#viewer'),
-			panorama: '../static/img/panorama.png',
+				container: document.querySelector('#viewer'),
+				panorama: '../static/img/panorama.png',
+				caption: 'panorama',
+				description: 'panorama',
+				defaultZoomLvl:0
 		});
-	</script>
+</script>
 </body>
 </html>
