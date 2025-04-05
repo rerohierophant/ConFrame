@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>panorama</title>
+	<link rel="stylesheet" href="../static/css/output.css" >
+	<link rel="stylesheet" href="../static/css/index.css" />
+	<script src="../static/js/screenShotPlugin.umd.js"></script>
+</head>
+<body>
+	<script type="text/javascript">
+
+		// 截图取消时的回调函数
+		const closeFn = ()=>{
+			console.log("截图窗口关闭");
+		}
+    const config = {
+        enableWebRtc: false,
+        cutBoxBdColor: "#7B57E0",
+				clickCutFullScreen: true,
+				hiddenToolIco: {
+					square: false,
+					round: true,
+					rightTop: true,
+					brush: true,
+					mosaicPen: true,
+					text: true,
+					save: false
+				},
+				completeCallback: ({ base64, cutInfo }) => {
+					console.log(base64, cutInfo);
+					// 对号图标点击后会将图片的base64地址与裁剪信息回传给你定义的函数，
+					// 通过传入completeCallback属性来获取回调函数返回的数据，
+					// 如果不传的话则会将这些数据放到sessionStorage中。
+					// 如果没有指定回调函数的话，可以从sessionStorage中获取
+					// sessionStorage.getItem("screenShotImg");
+				},
+				closeCallback: closeFn
+    };
+
+    const changeScreenShot = () => {
+        new screenShotPlugin(config);
+    }
+</script>
+
+	<div id="viewer" style="width: 100vw; height: 100vh;"></div>
+	<div id="sidebar" class="fixed right-[-80px] top-1/2 transform -translate-y-1/2 flex-col px-4 py-4 bg-neutral-950 bg-opacity-70 rounded-xl inline-flex justify-start items-center gap-6 overflow-hidden transition-transform duration-300">
+		<div class="inline-flex flex-col justify-center items-center gap-1">
+		  <button id="preview" class="w-12 h-12 p-2 bg-Color-Palette-Dark-Unit-BG-2 rounded-lg flex flex-col justify-center items-center gap-2 hover:bg-Color-Palette-Dark-Unit-BG-Hover">
+			<div data-svg-wrapper class="relative">
+			<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<path d="M15.904 18.4319C11.232 18.4319 7.45601 14.6239 7.45601 9.98391C7.45601 5.34391 11.232 1.50391 15.904 1.50391C20.576 1.50391 24.352 5.31191 24.352 9.95191C24.352 14.5919 20.576 18.4319 15.904 18.4319ZM15.904 3.93591C12.576 3.93591 9.88801 6.62391 9.88801 9.95191C9.88801 13.2799 12.608 15.9999 15.904 15.9999C19.232 15.9999 21.92 13.3119 21.92 9.98391C21.92 6.65591 19.232 3.93591 15.904 3.93591ZM24.128 30.9119H7.71201C4.67201 30.9119 2.20801 28.4479 2.20801 25.4079C2.20801 22.3679 4.67201 19.9039 7.71201 19.9039H24.128C27.168 19.9039 29.632 22.3679 29.632 25.4079C29.632 28.4479 27.168 30.9119 24.128 30.9119ZM7.71201 22.2399C5.95201 22.2399 4.51201 23.6799 4.51201 25.4399C4.51201 27.1999 5.95201 28.6399 7.71201 28.6399H24.128C25.888 28.6399 27.328 27.1999 27.328 25.4399C27.328 23.6799 25.888 22.2399 24.128 22.2399H7.71201Z" fill="#E3E3E3"/>
+			<path d="M23.648 26.1439H20.736C20.064 26.1439 19.52 25.5999 19.52 24.9279C19.52 24.2559 20.064 23.7119 20.736 23.7119H23.648C24.32 23.7119 24.864 24.2559 24.864 24.9279C24.864 25.5999 24.32 26.1439 23.648 26.1439Z" fill="#7B57E0"/>
+			</svg>
+			</div>
+			</button>
+		  <div class="justify-start text-Typography-Dark-Base-Primary-Gray-1 text-m font-semibold font-['PingFang_SC']">预览人物</div>
+		</div>
+		<div class="inline-flex flex-col justify-center items-center gap-1">
+		  <button class="w-12 h-12 p-2 bg-Color-Palette-Dark-Unit-BG-2 rounded-lg flex flex-col justify-center items-center gap-2 hover:bg-Color-Palette-Dark-Unit-BG-Hover" onclick="changeScreenShot()">
+			<div data-svg-wrapper class="relative">
+			<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<path d="M10.4375 3.4876C10.4375 2.71885 9.81248 2.1001 9.04998 2.1001C8.28748 2.1001 7.66248 2.7251 7.66248 3.4876V6.26885H3.48748C2.71873 6.26885 2.09998 6.89385 2.09998 7.65635C2.09998 8.41885 2.72498 9.04385 3.48748 9.04385H22.9562V21.5626H25.7375V7.65635C25.7375 6.8876 25.1125 6.26885 24.35 6.26885H10.4375V3.4876ZM7.65623 10.4376V24.3438C7.65623 25.1126 8.28123 25.7313 9.04373 25.7313H22.95V28.5126C22.95 29.2813 23.575 29.9001 24.3375 29.9001C25.1 29.9001 25.725 29.2751 25.725 28.5126V25.7313H28.5062C29.275 25.7313 29.8937 25.1063 29.8937 24.3438C29.8937 23.5813 29.2687 22.9563 28.5062 22.9563H10.4375V10.4376H7.65623Z" fill="#E3E3E3"/>
+			</svg>
+			</div>
+			</button>
+		  <div class="justify-start text-Typography-Dark-Base-Primary-Gray-1 text-m font-semibold font-['PingFang_SC']" >截取选框</div>
+		</div>
+		<div class="inline-flex flex-col justify-center items-center gap-1">
+		  <button class="w-12 h-12 p-2 bg-Color-Palette-Dark-Unit-BG-2 rounded-lg flex flex-col justify-center items-center gap-2 hover:bg-Color-Palette-Dark-Unit-BG-Hover">
+			<div data-svg-wrapper class="relative">
+			<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<path d="M23.171 27.858H8.82063C6.21838 27.858 4.10107 25.7412 4.10107 23.139V8.78865C4.10107 6.1864 6.21838 4.06909 8.82063 4.06909H23.171C25.7732 4.06909 27.8905 6.1864 27.8905 8.78865V23.139C27.8905 25.7412 25.7732 27.858 23.171 27.858ZM8.82063 5.89365C7.2244 5.89365 5.92563 7.1919 5.92563 8.78865V23.139C5.92563 24.7352 7.22388 26.0335 8.82063 26.0335H23.171C24.7672 26.0335 26.066 24.7352 26.066 23.139V8.78865C26.066 7.19242 24.7677 5.89365 23.171 5.89365H8.82063Z" fill="#E3E3E3"/>
+			<path d="M14.1319 15.4065C13.8968 15.4065 13.6616 15.3159 13.4831 15.1353L8.10155 9.68829C7.74754 9.33008 7.7512 8.75244 8.10941 8.39843C8.46762 8.04493 9.04473 8.04755 9.39927 8.40628L14.7813 13.8533C15.1353 14.2115 15.1317 14.7891 14.7734 15.1431C14.5954 15.3191 14.3639 15.4065 14.1319 15.4065Z" fill="#7B57E0"/>
+			<path d="M14.1848 9.95957H8.75041C8.24662 9.95957 7.83813 9.55109 7.83813 9.04729C7.83813 8.54349 8.24662 8.13501 8.75041 8.13501H14.1848C14.6886 8.13501 15.0971 8.54349 15.0971 9.04729C15.0971 9.55109 14.6886 9.95957 14.1848 9.95957Z" fill="#7B57E0"/>
+			<path d="M8.75041 15.3934C8.24662 15.3934 7.83813 14.985 7.83813 14.4812V9.04729C7.83813 8.54349 8.24662 8.13501 8.75041 8.13501C9.25421 8.13501 9.66269 8.54349 9.66269 9.04729V14.4812C9.66269 14.985 9.25421 15.3934 8.75041 15.3934ZM23.3291 23.8543C23.0939 23.8543 22.8588 23.7632 22.6802 23.5835L17.2987 18.136C16.9447 17.7768 16.9484 17.1997 17.3066 16.8451C17.6653 16.4927 18.2419 16.4948 18.5964 16.853L23.9779 22.301C24.332 22.6603 24.3283 23.2374 23.9701 23.5919C23.7926 23.7674 23.5611 23.8543 23.3291 23.8543Z" fill="#7B57E0"/>
+			<path d="M23.3292 23.8543H17.8953C17.3915 23.8543 16.983 23.4464 16.983 22.9421C16.983 22.4377 17.3915 22.0298 17.8953 22.0298H23.3292C23.833 22.0298 24.2415 22.4377 24.2415 22.9421C24.2415 23.4464 23.833 23.8543 23.3292 23.8543Z" fill="#7B57E0"/>
+			<path d="M23.3291 23.8544C22.8254 23.8544 22.4169 23.4465 22.4169 22.9421V17.5077C22.4169 17.0034 22.8254 16.5955 23.3291 16.5955C23.8329 16.5955 24.2414 17.0034 24.2414 17.5077V22.9421C24.2414 23.4465 23.8329 23.8544 23.3291 23.8544Z" fill="#7B57E0"/>
+			</svg>
+			</div>
+			</button>
+		  <div class="justify-start text-Typography-Dark-Base-Primary-Gray-1 text-m font-semibold font-['PingFang_SC']">截取全屏</div>
+		</div>
+	</div>
+
+	<header id="header" class="fixed left-0 top-0 w-full p-8 bg-Color-Palette-Dark-Unit-BG inline-flex justify-between items-center transition-transform duration-300">
+		<div class="flex justify-start items-center gap-8">
+			<div data-svg-wrapper data-icon="Arrow right">
+			<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<path fill-rule="evenodd" clip-rule="evenodd" d="M18.3897 23.837L10.5071 15.9666L18.3897 8.0962C18.7979 7.68869 19.4596 7.68869 19.8677 8.0962C20.2759 8.5037 20.2759 9.16439 19.8677 9.5719L13.3175 15.9687L19.8677 22.3613C20.2759 22.7688 20.2759 23.4295 19.8677 23.837C19.4596 24.2445 18.7979 24.2445 18.3897 23.837Z" fill="#576776"/>
+			</svg>
+			</div>
+			<div class="justify-start text-Typography-Dark-Base-Primary-Gray-1 text-xl font-semibold font-['PingFang_SC']">新项目-未命名</div>
+			<div class="justify-start text-Typography-Dark-Base-Primary-Gray-1 text-xl font-semibold font-['PingFang_SC']">></div>
+			<div class="justify-start text-Typography-Dark-Base-Primary-Gray-1 text-xl font-semibold font-['PingFang_SC']">镜头1</div>
+		</div>
+	
+		<div class="w-52 flex justify-start items-center gap-5">
+			<img class="w-12 h-12 rounded-[133.33px]" src="https://placehold.co/50x50" />
+			<div class="inline-flex flex-col justify-start items-start gap-1">
+			<div class="justify-start text-Typography-Dark-Base-Primary-Gray-1 text-lg font-medium font-['PingFang_SC']">酸菜且多余</div>
+			<div class="justify-start text-Typography-Dark-Base-Secondary-Gray-2 text-xs font-medium font-['PingFang_SC']">wtl02@gmail.com</div>
+			</div>
+		</div>
+	</header>
+	<!-- 定义模块导入映射，指定各模块的加载路径 -->
+
+	<script type="importmap">
+    {
+			"imports": {
+					"three": "https://cdn.jsdelivr.net/npm/three/build/three.module.js",
+					"@photo-sphere-viewer/core": "../static/js/index.module.js"
+			}
+    }
+	</script>
+
+	<script type="module">
+		import { Viewer } from '@photo-sphere-viewer/core';
+
+		const viewer = new Viewer({
+				container: document.querySelector('#viewer'),
+				panorama: '../static/img/panorama.png',
+				caption: '请在侧边栏选择截取背景参考图',
+				// description: 'panorama',
+				defaultZoomLvl:0,
+				rendererParameters: {
+					preserveDrawingBuffer: true
+				}				
+		});
+	</script>
+
+<script>
+	const sidebar = document.getElementById('sidebar');
+	const header = document.getElementById('header');
+	document.addEventListener('mousemove', (e) => {
+		if (e.clientX > window.innerWidth - 100) {
+				sidebar.classList.add('translate-x-[-100px]');
+		} else {
+				sidebar.classList.remove('translate-x-[-100px]');
+		}
+	});
+
+	document.addEventListener('mousemove', (e) => {
+		if (e.clientY < 25) {
+			header.classList.remove('translate-y-[-224px]');
+		} else if (e.clientY > 100) {  // 只有当光标离开header区域时才隐藏
+			header.classList.add('translate-y-[-224px]');
+		}
+	});
+</script>
+
+<script>
+	const previewButton = document.getElementById('preview');
+
+	previewButton.addEventListener('click', () => {
+		// 创建图片元素
+		const previewImage = document.createElement('img');
+		previewImage.id = 'preview-image';
+		previewImage.src = '../static/img/mask/mask.png'; // 替换为你的图片路径
+		previewImage.classList.add('fixed', 'top-1/2', 'left-1/2', '-translate-x-1/2', '-translate-y-1/2', 'h-screen', 'opacity-0', 'transition-opacity', 'duration-1000', 'ease-in-out');
+		document.body.appendChild(previewImage);
+
+		// 触发动画
+		setTimeout(() => {
+			previewImage.classList.add('opacity-50');
+		}, 10); // 小延迟确保样式应用
+
+		// 动画结束后移除元素
+		setTimeout(() => {
+			previewImage.classList.remove('opacity-50');
+			setTimeout(() => {
+				previewImage.remove();
+			}, 1000); // 等待透明度渐变完成
+		}, 1000); // 等待透明度渐变完成
+	});
+</script>
+
+<script>
+	const observer = new MutationObserver((mutationsList) => {
+		for (const mutation of mutationsList) {
+			for (const node of mutation.addedNodes) {
+				if (node.id === 'toolPanel') {
+
+					// 修改样式
+					node.style.backgroundColor = 'rgba(13, 15, 17, 0.7)'; // 黑色背景
+					node.style.borderRadius = '12px';
+					node.style.padding = '8px';
+					node.style.boxShadow = '0 2px 8px rgba(0,0,0,0.3)';
+					// 如果想改内部按钮的样式，也可以继续操作
+					const items = node.querySelectorAll('.item-panel');
+					items.forEach(item => {
+						item.style.filter = 'invert(1)'; // 让图标变成浅色
+					});
+
+				}
+			}
+		}
+	});
+
+	observer.observe(document.body, {
+		childList: true,
+		subtree: true
+	});
+</script>
+</body>
+</html>

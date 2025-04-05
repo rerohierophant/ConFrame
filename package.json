@@ -1,0 +1,19 @@
+{
+  "name": "conframe",
+  "version": "1.0.0",
+  "description": "",
+  "main": "tailwind.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "tailwindcss": "^3.4.17"
+  },
+  "dependencies": {
+    "@photo-sphere-viewer/core": "^5.12.1",
+    "js-web-screen-shot": "^1.9.9-rc.26"
+  }
+}
