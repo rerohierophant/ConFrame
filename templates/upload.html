@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>图片上传处理</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+</head>
+<body>
+    <h2>图片上传处理</h2>
+    <form id="uploadForm">
+        <input type="file" id="imageInput" accept="image/*">
+        <button type="submit">上传并处理</button>
+    </form>
+    
+    <div id="status"></div>
+    <div id="result">
+        <img id="resultImage" style="display: none; max-width: 500px;">
+    </div>
+
+    <script>
+        // 连接WebSocket
+        const socket = io();
+        
+        // 监听处理进度
+        socket.on('progress', function(data) {
+            let statusText = '';
+            if(data.type === 'execution_start') {
+                statusText = '开始处理...';
+            } else if(data.type === 'executing') {
+                if(data.data.node) {
+                    statusText = `正在处理节点: ${data.data.node}`;
+                } else {
+                    statusText = '处理完成';
+                }
+            }
+            document.getElementById('status').textContent = statusText;
+        });
+        
+        // 监听处理结果
+        socket.on('result', function(data) {
+            if(data.success) {
+                const img = document.getElementById('resultImage');
+                img.src = data.image_url;
+                img.style.display = 'block';
+            }
+        });
+        
+        // 监听错误
+        socket.on('error', function(data) {
+            document.getElementById('status').textContent = `错误: ${data.error}`;
+        });
+        
+        // 处理表单提交
+        document.getElementById('uploadForm').onsubmit = async function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData();
+            const imageFile = document.getElementById('imageInput').files[0];
+            formData.append('image', imageFile);
+            
+            try {
+                document.getElementById('status').textContent = '上传中...';
+                document.getElementById('resultImage').style.display = 'none';
+                
+                const response = await fetch('/process_image', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const result = await response.json();
+                if(!result.success) {
+                    document.getElementById('status').textContent = `错误: ${result.error}`;
+                }
+            } catch(error) {
+                document.getElementById('status').textContent = `错误: ${error.message}`;
+            }
+        };
+    </script>
+</body>
+</html>

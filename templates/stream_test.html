@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coze API 流式输出测试</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        #output {
+            background-color: #f8f9fa;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 20px;
+            margin-top: 20px;
+            min-height: 200px;
+            line-height: 1.6;
+            font-size: 16px;
+            color: #333;
+        }
+        .message-container {
+            margin-bottom: 20px;
+        }
+        .message {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .error {
+            color: #dc3545;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 4px;
+            background-color: #f8d7da;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+        }
+        .status {
+            margin-top: 10px;
+            font-style: italic;
+            color: #666;
+        }
+        .cursor {
+            display: inline-block;
+            width: 8px;
+            height: 16px;
+            background-color: #333;
+            animation: blink 1s infinite;
+            margin-left: 2px;
+            vertical-align: middle;
+        }
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Coze API 流式输出测试</h1>
+        <div id="output"></div>
+        <div class="status" id="status">等待连接...</div>
+    </div>
+
+    <script>
+        const output = document.getElementById('output');
+        const status = document.getElementById('status');
+        let currentMessageContainer = null;
+        let cursor = null;
+        
+        function createCursor() {
+            const cursorElement = document.createElement('span');
+            cursorElement.className = 'cursor';
+            return cursorElement;
+        }
+
+        // 创建 EventSource 连接
+        const eventSource = new EventSource('/stream');
+        
+        // 连接建立时
+        eventSource.onopen = function() {
+            status.textContent = '连接已建立，正在等待数据...';
+            status.style.color = '#28a745';
+            
+            // 创建新的消息容器和光标
+            currentMessageContainer = document.createElement('div');
+            currentMessageContainer.className = 'message-container';
+            cursor = createCursor();
+            output.appendChild(currentMessageContainer);
+            currentMessageContainer.appendChild(cursor);
+        };
+        
+        // 处理接收到的消息
+        eventSource.onmessage = function(event) {
+            const data = JSON.parse(event.data);
+            
+            if (data.type === 'error') {
+                // 错误消息使用单独的错误样式显示
+                const errorDiv = document.createElement('div');
+                errorDiv.className = 'error';
+                errorDiv.textContent = data.content;
+                output.appendChild(errorDiv);
+            } else {
+                // 移除旧的光标
+                if (cursor) {
+                    cursor.remove();
+                }
+                
+                // 处理消息内容中的换行
+                const content = data.content;
+                
+                // 如果是新段落的开始（以换行符开始），创建新的消息容器
+                if (content.startsWith('\n') || !currentMessageContainer) {
+                    currentMessageContainer = document.createElement('div');
+                    currentMessageContainer.className = 'message-container';
+                    output.appendChild(currentMessageContainer);
+                }
+                
+                const messageSpan = document.createElement('span');
+                messageSpan.className = 'message';
+                messageSpan.textContent = content;
+                currentMessageContainer.appendChild(messageSpan);
+                
+                // 添加新的光标
+                cursor = createCursor();
+                currentMessageContainer.appendChild(cursor);
+                
+                // 自动滚动到底部
+                output.scrollTop = output.scrollHeight;
+            }
+        };
+        
+        // 处理错误
+        eventSource.onerror = function(error) {
+            console.error('EventSource failed:', error);
+            status.textContent = '连接已断开';
+            status.style.color = '#dc3545';
+            
+            // 移除光标
+            if (cursor) {
+                cursor.remove();
+                cursor = null;
+            }
+            
+            eventSource.close();
+            
+            const errorDiv = document.createElement('div');
+            errorDiv.className = 'error';
+            errorDiv.textContent = '连接已断开，请刷新页面重试';
+            output.appendChild(errorDiv);
+        };
+    </script>
+</body>
+</html> 

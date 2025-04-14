@@ -1,13 +1,28 @@
 <!doctype html>
-<html>
+<html class="h-full">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="../static/css/output.css" rel="stylesheet">
   <title>index</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    /* 在你的 CSS 文件里加 */
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background-color: rgba(255, 255, 255, 0.3);
+      border-radius: 4px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: transparent;
+    }
+  </style>
 </head>
 
-<body>
+<body class="h-full">
   <!-- 模态弹窗 -->
   <prop id="newProjectModal" class="fixed inset-0 z-50 hidden">
     <!-- 背景遮罩 -->
@@ -116,7 +131,6 @@
                     </icon>
                     <div class="text-center justify-center text-Typography-Dark-Base-Primary-Gray-1 text-lg font-semibold font-['PingFang_SC']">直播</div>
                   </button>
-
                   <button class="w-52 h-28 py-2.5 bg-Color-Palette-Dark-Unit-BG-2 rounded-lg inline-flex flex-col justify-center items-center gap-1 hover:bg-Color-Palette-Dark-Unit-BG-Hover transition-all duration-300 ease-in-out">
                     <icon data-svg-wrapper class="relative">
 											<svg width="41" height="41" viewBox="0 0 41 41" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -169,13 +183,16 @@
                 <textarea class="w-full h-[320px] bg-Color-Palette-Dark-Unit-BG-2 border-none text-gray-400 text-base resize-none focus:outline-none py-2"
                 placeholder="请输入您想创作的故事，点击【AI扩写】尝试自动生成"></textarea>              
                 <!-- AI扩写按钮 -->
-                <div class="self-stretch w-full px-8 py-2 bg-gradient-to-br from-slate-500/40 to-zinc-500/40 rounded-lg inline-flex justify-center items-center gap-4 cursor-pointer hover:bg-gradient-to-br hover:from-slate-500/50 hover:to-zinc-500/50">
-                  <icon data-svg-wrapper class="relative">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21" fill="none">
-                      <path d="M18.2538 19.3616C18.3986 19.3602 18.5417 19.3301 18.6748 19.2731C18.8079 19.216 18.9284 19.1332 19.0292 19.0293C19.134 18.9292 19.2175 18.8088 19.2745 18.6756C19.3315 18.5423 19.3608 18.3989 19.3608 18.2539C19.3608 18.109 19.3315 17.9655 19.2745 17.8322C19.2175 17.699 19.134 17.5786 19.0292 17.4785L10.2077 8.65391C10.1745 8.61883 10.1345 8.59088 10.0901 8.57179C10.0457 8.55269 9.99792 8.54285 9.94961 8.54285C9.9013 8.54285 9.8535 8.55269 9.80913 8.57179C9.76476 8.59088 9.72474 8.61883 9.69153 8.65391L8.65692 9.68775C8.62211 9.7212 8.59442 9.76134 8.5755 9.80575C8.55658 9.85016 8.54683 9.89794 8.54683 9.94621C8.54683 9.99449 8.55658 10.0423 8.5755 10.0867C8.59442 10.1311 8.62211 10.1712 8.65692 10.2047L17.4785 19.0293C17.5793 19.1332 17.6998 19.216 17.8329 19.2731C17.966 19.3301 18.109 19.3602 18.2538 19.3616ZM4.61076 15.3278C4.65469 15.3281 4.69769 15.3151 4.73399 15.2903C4.77029 15.2656 4.79815 15.2303 4.81384 15.1893C5.00931 14.574 5.34975 14.0147 5.80651 13.5585C6.26327 13.1023 6.82296 12.7625 7.43845 12.5678C7.47914 12.5516 7.51405 12.5236 7.53864 12.4874C7.56324 12.4512 7.57639 12.4084 7.57639 12.3647C7.57639 12.3209 7.56324 12.2781 7.53864 12.2419C7.51405 12.2057 7.47914 12.1777 7.43845 12.1616C6.82366 11.9666 6.26471 11.6267 5.80864 11.1706C5.35256 10.7146 5.01271 10.1556 4.81769 9.54083C4.80155 9.50014 4.77356 9.46524 4.73735 9.44064C4.70114 9.41605 4.65838 9.4029 4.61461 9.4029C4.57084 9.4029 4.52807 9.41605 4.49186 9.44064C4.45565 9.46524 4.42767 9.50014 4.41153 9.54083C4.21626 10.1556 3.87623 10.7145 3.42004 11.1706C2.96385 11.6266 2.40484 11.9665 1.78999 12.1616C1.75189 12.1703 1.71775 12.1914 1.69296 12.2216C1.66817 12.2518 1.65414 12.2895 1.65307 12.3285C1.64712 12.3778 1.65722 12.4277 1.68189 12.4708C1.70656 12.5139 1.74447 12.5479 1.78999 12.5678C2.40446 12.7639 2.96289 13.1047 3.41838 13.5614C3.87388 14.0181 4.21314 14.5774 4.40769 15.1924C4.42387 15.2328 4.45194 15.2674 4.4882 15.2916C4.52446 15.3158 4.56719 15.3284 4.61076 15.3278ZM7.36153 8.76468C7.4098 8.76424 7.4575 8.75422 7.50187 8.73521C7.54624 8.71619 7.58639 8.68856 7.61999 8.65391L8.65384 7.62006C8.68892 7.58685 8.71686 7.54684 8.73596 7.50246C8.75505 7.45809 8.7649 7.41029 8.7649 7.36198C8.7649 7.31368 8.75505 7.26588 8.73596 7.2215C8.71686 7.17713 8.68892 7.13712 8.65384 7.10391L7.47307 5.92237C7.42284 5.87025 7.36262 5.8288 7.29601 5.80049C7.22939 5.77218 7.15776 5.75758 7.08538 5.75758C7.013 5.75758 6.94136 5.77218 6.87475 5.80049C6.80814 5.8288 6.74792 5.87025 6.69769 5.92237L5.9223 6.69775C5.87019 6.74798 5.82874 6.8082 5.80042 6.87482C5.77211 6.94143 5.75752 7.01306 5.75752 7.08544C5.75752 7.15782 5.77211 7.22946 5.80042 7.29607C5.82874 7.36269 5.87019 7.42291 5.9223 7.47314L7.10307 8.65391C7.13675 8.68846 7.17692 8.71603 7.22127 8.73503C7.26562 8.75404 7.31328 8.76411 7.36153 8.76468ZM13.0846 8.30314C13.1345 8.30314 13.1831 8.28694 13.2231 8.25698C13.263 8.22702 13.2922 8.18492 13.3061 8.13698C13.5182 7.43998 13.8986 6.80592 14.4138 6.29076C14.9289 5.7756 15.563 5.3952 16.26 5.18314C16.3026 5.16457 16.3387 5.13356 16.3634 5.09417C16.3881 5.05477 16.4003 5.00883 16.3985 4.96237C16.4006 4.91565 16.3885 4.86937 16.3638 4.82967C16.3391 4.78997 16.3029 4.75872 16.26 4.74006C15.563 4.528 14.9289 4.1476 14.4138 3.63244C13.8986 3.11728 13.5182 2.48321 13.3061 1.78621C13.2922 1.73828 13.263 1.69617 13.2231 1.66621C13.1831 1.63625 13.1345 1.62006 13.0846 1.62006C13.0347 1.62006 12.9861 1.63625 12.9461 1.66621C12.9062 1.69617 12.8771 1.73828 12.8631 1.78621C12.651 2.48301 12.2707 3.1169 11.7557 3.63192C11.2407 4.14694 10.6068 4.52726 9.90999 4.73929C9.86206 4.75327 9.81995 4.78242 9.78999 4.82237C9.76003 4.86231 9.74384 4.9109 9.74384 4.96083C9.74384 5.01076 9.76003 5.05935 9.78999 5.09929C9.81995 5.13924 9.86206 5.16839 9.90999 5.18237C10.6069 5.39448 11.2408 5.77491 11.7559 6.29007C12.2709 6.80523 12.6511 7.43927 12.8631 8.13621C12.8769 8.18429 12.906 8.22657 12.946 8.25668C12.9859 8.28678 13.0346 8.30309 13.0846 8.30314ZM3.85384 6.07237C3.88741 6.07357 3.92038 6.06323 3.94726 6.04308C3.97413 6.02292 3.99329 5.99416 4.00153 5.9616C4.13714 5.4974 4.38751 5.07485 4.72953 4.73296C5.07156 4.39107 5.4942 4.14087 5.95845 4.00544C5.99041 3.99612 6.01848 3.97669 6.03845 3.95006C6.05843 3.92343 6.06922 3.89104 6.06922 3.85775C6.06922 3.82446 6.05843 3.79207 6.03845 3.76544C6.01848 3.73881 5.99041 3.71938 5.95845 3.71006C5.49377 3.57402 5.07087 3.32305 4.72883 2.98034C4.3868 2.63763 4.13666 2.21424 4.00153 1.74929C3.992 1.71764 3.97252 1.6899 3.94599 1.67018C3.91946 1.65047 3.88728 1.63982 3.85422 1.63982C3.82117 1.63982 3.78899 1.65047 3.76246 1.67018C3.73593 1.6899 3.71645 1.71764 3.70692 1.74929C3.57088 2.21398 3.31991 2.63688 2.9772 2.97891C2.63449 3.32095 2.2111 3.57109 1.74615 3.70621C1.71419 3.71553 1.68612 3.73497 1.66615 3.7616C1.64618 3.78823 1.63538 3.82062 1.63538 3.85391C1.63538 3.88719 1.64618 3.91958 1.66615 3.94621C1.68612 3.97284 1.71419 3.99228 1.74615 4.0016C2.21141 4.13693 2.63498 4.38751 2.97761 4.73014C3.32023 5.07276 3.57082 5.49634 3.70615 5.9616C3.71498 5.99359 3.73439 6.02165 3.76121 6.04121C3.78803 6.06076 3.82068 6.07066 3.85384 6.06929V6.07237Z" fill="#E3E3E3"/>
-                    </svg>
-                  </icon>
-                  <div class="justify-center text-Typography-Dark-Base-Primary-Gray-1 text-base font-semibold font-['PingFang_SC']">AI扩写故事</div>
+                <div class="self-stretch inline-flex justify-start items-start gap-3">
+                  <div class="flex-1 px-4 py-3 bg-gradient-to-br from-slate-500/40 to-zinc-500/40 rounded-lg inline-flex flex-col justify-start items-start gap-3">
+                    <div class="self-stretch justify-center text-Typography-Dark-Base-Primary-Gray-1 text-base font-normal font-['PingFang_SC']">老年露丝在睡梦中回到了巨轮上。她又见到了年轻英俊的恋人，两...</div>
+                  </div>
+                  <div class="flex-1 px-4 py-3 bg-gradient-to-br from-slate-500/40 to-zinc-500/40 rounded-lg inline-flex flex-col justify-start items-start gap-3">
+                    <div class="self-stretch justify-center text-Typography-Dark-Base-Primary-Gray-1 text-base font-normal font-['PingFang_SC']">老年露丝在睡梦中回到了巨轮上。她又见到了年轻英俊的恋人，两...</div>
+                  </div>
+                  <div class="flex-1 px-4 py-3 bg-gradient-to-br from-slate-500/40 to-zinc-500/40 rounded-lg inline-flex flex-col justify-start items-start gap-3">
+                    <div class="self-stretch justify-center text-Typography-Dark-Base-Primary-Gray-1 text-base font-normal font-['PingFang_SC']">老年露丝在睡梦中回到了巨轮上。她又见到了年轻英俊的恋人，两...</div>
+                  </div>
                 </div>
               </div>
           </div>
@@ -194,7 +211,7 @@
     </div>
   </prop>
   
-  <main class="w-screen h-screen flex bg-Color-Palette-Dark-BG overflow-hidden gap-8">
+  <main class="w-screen h-full flex bg-Color-Palette-Dark-BG gap-8">
     
     <!-- 左侧边栏 -->
     <sidebar class="w-[333px] px-8 py-12 bg-Color-Palette-Dark-Unit-BG justify-between h-full flex flex-col overflow-hidden">   
@@ -311,9 +328,9 @@
     </sidebar>
 
     <!-- 主要内容区域 -->
-    <div class="flex-1 flex flex-col gap-8">
+    <div class="flex-1 flex flex-col gap-8 h-full overflow-hidden">
       <!-- 顶部栏 -->
-      <topbar class="px-8 py-8 bg-Color-Palette-Dark-Unit-BG rounded-bl-2xl rounded-br-2xl flex inline-flex justify-between items-center">
+      <topbar class="h-[116px] px-8 py-8 bg-Color-Palette-Dark-Unit-BG rounded-bl-2xl rounded-br-2xl flex inline-flex justify-between items-center">
         <div class="flex justify-start items-center gap-8">
           <div id="workspaceTitle" class="justify-start text-Typography-Dark-Base-Primary-Gray-1 text-32 font-semibold font-['PingFang_SC']">
             工作台
@@ -342,155 +359,164 @@
           <img class="w-12 h-12 rounded-[999px]" src="https://placehold.co/50x50" />
           <div class="inline-flex flex-col justify-start items-start gap-1">
             <div class="justify-start text-Typography-Dark-Base-Primary-Gray-1 text-lg font-medium font-['PingFang_SC']">
-              酸菜且多余
+              {{ username }}
             </div>
-            <div class="justify-start text-Typography-Dark-Base-Secondary-Gray-2 text-xs font-medium font-['PingFang_SC']">
-              wtl02@gmail.com
+            <div class="justify-start text-Typography-Dark-Base-Secondary-Gray-2 text-sm font-medium font-['PingFang_SC']">
+              {{ email }}
             </div>
           </div>
         </div>
       </topbar>
 
       <!-- 内容容器 -->
-      <container class="flex-1 px-8 py-6 bg-Color-Palette-Dark-Unit-BG rounded-tl-2xl rounded-tr-2xl inline-flex flex-col justify-start items-start gap-6 overflow-hidden">
-        <header id="workspaceHeader" class="justify-start text-Typography-Dark-Base-Primary-Gray-1 text-2xl font-medium font-['PingFang_SC'] tracking-tight">
-          最近项目
-        </header>
+      <container class="h-full px-8 py-6 bg-Color-Palette-Dark-Unit-BG rounded-tl-2xl rounded-tr-2xl flex flex-col justify-start items-start gap-6">
+        <div class="top-0 z-10 bg-Color-Palette-Dark-Unit-BG pb-4">
+          <header id="workspaceHeader" class="justify-start text-Typography-Dark-Base-Primary-Gray-1 text-2xl font-medium font-['PingFang_SC'] tracking-tight">
+            最近项目
+          </header>
 
-        <header id="myWorksHeader" class="justify-start text-Typography-Dark-Base-Primary-Gray-1 text-2xl font-medium font-['PingFang_SC'] tracking-tight" style="display: none;">
-          全部作品
-        </header>
-
+          <header id="myWorksHeader" class="justify-start text-Typography-Dark-Base-Primary-Gray-1 text-2xl font-medium font-['PingFang_SC'] tracking-tight" style="display: none;">
+            全部作品
+          </header>
+        </div>
         <!-- 项目列表 -->
-        <div id="projectsList" class="self-stretch inline-flex justify-start items-start gap-8 flex-wrap content-start">
-          <!-- 新建项目卡片 -->
-          <button id="newProjectBtn2" class="w-[465px] h-[356px] rounded-lg outline-dashed outline-[5px] outline-offset-[-5px] outline-Color-Palette-Dark-Dash inline-flex flex-col justify-center items-center gap-4 group transition-all duration-300 hover:outline-Color-Palette-Dark-Purpure">
-            <icon class="w-14 h-14 relative">
-              <svg xmlns="http://www.w3.org/2000/svg" width="55" height="54" viewBox="0 0 55 54" fill="none">
-                <path d="M7.25 27H47.75" class="stroke-[#E3E3E3] stroke-[4px] stroke-linecap-round stroke-linejoin-round group-hover:stroke-Color-Palette-Dark-Purpure transition-all duration-300"/>
-                <path d="M27.5 47.25V6.75" class="stroke-[#E3E3E3] stroke-[4px] stroke-linecap-round stroke-linejoin-round group-hover:stroke-Color-Palette-Dark-Purpure transition-all duration-300"/>
-              </svg>
-            </icon>
-            <div class="justify-start text-Typography-Dark-Base-Primary-Gray-1 text-xl font-semibold font-['PingFang_SC'] leading-normal group-hover:text-Color-Palette-Dark-Purpure transition-colors duration-300">
-              创建新项目
-            </div>
-          </button>
-          
-          <!-- 项目卡片 -->
-          <div class="h-[356px] bg-Color-Palette-Dark-Unit-BG-2 rounded-lg inline-flex flex-col justify-start items-start gap-4">
-            <div class="flex flex-col justify-start items-start overflow-hidden rounded-t-lg">
-              <img class="w-[465px] h-[266px]" src="https://placehold.co/465x266" />
-            </div>
-            
-            <div class="self-stretch px-6 inline-flex justify-between items-center">
-              <div class="flex flex-col gap-1">
-                <div class="justify-start text-Typography-Dark-Base-Primary-Gray-1 text-xl font-semibold font-['PingFang_SC']">
-                  丛林寻踪
-                </div>
-                <div class="flex justify-start items-center">
-                  <div class="justify-start text-Typography-Dark-Highlight-Primary text-base font-semibold font-['PingFang_SC']">
-                    更新时间 · 
-                  </div>
-                  <div class="justify-start text-Typography-Dark-Highlight-Primary text-base font-semibold font-['PingFang_SC']">
-                    2025-03-11 23:23
-                  </div>
-                </div>
+        <div id="projectsList" class="flex-1 overflow-y-auto pr-2 h-full custom-scrollbar">
+          <div class="inline-flex justify-start items-start gap-8 flex-wrap w-full">
+            <!-- 新建项目卡片 -->
+            <button id="newProjectBtn2" class="w-[465px] h-[356px] rounded-lg outline-dashed outline-[5px] outline-offset-[-5px] outline-Color-Palette-Dark-Dash inline-flex flex-col justify-center items-center gap-4 group transition-all duration-300 hover:outline-Color-Palette-Dark-Purpure">
+              <icon class="w-14 h-14 relative">
+                <svg xmlns="http://www.w3.org/2000/svg" width="55" height="54" viewBox="0 0 55 54" fill="none">
+                  <path d="M7.25 27H47.75" class="stroke-[#E3E3E3] stroke-[4px] stroke-linecap-round stroke-linejoin-round group-hover:stroke-Color-Palette-Dark-Purpure transition-all duration-300"/>
+                  <path d="M27.5 47.25V6.75" class="stroke-[#E3E3E3] stroke-[4px] stroke-linecap-round stroke-linejoin-round group-hover:stroke-Color-Palette-Dark-Purpure transition-all duration-300"/>
+                </svg>
+              </icon>
+              <div class="justify-start text-Typography-Dark-Base-Primary-Gray-1 text-xl font-semibold font-['PingFang_SC'] leading-normal group-hover:text-Color-Palette-Dark-Purpure transition-colors duration-300">
+                创建新项目
               </div>
-              <div class="relative inline-block">
-                <button class="w-10 h-10 rounded-[999px] flex justify-center items-center gap-2.5 dropdown-toggle hover:bg-Color-Palette-Dark-Unit-BG-Hover tracking-tight duration-300 ease-in-out">
-                  <icon class="w-8 h-8 relative">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none"><script xmlns=""/>
-                      <path d="M16.0166 18.4428C17.3672 18.4428 18.462 17.3491 18.462 16C18.462 14.6509 17.3672 13.5573 16.0166 13.5573C14.666 13.5573 13.5712 14.6509 13.5712 16C13.5712 17.3491 14.666 18.4428 16.0166 18.4428Z" fill="white"/>
-                      <path d="M27.5712 18.4428C28.9218 18.4428 30.0166 17.3491 30.0166 16C30.0166 14.6509 28.9218 13.5573 27.5712 13.5573C26.2206 13.5573 25.1258 14.6509 25.1258 16C25.1258 17.3491 26.2206 18.4428 27.5712 18.4428Z" fill="white"/>
-                      <path d="M4.46201 18.4428C5.81257 18.4428 6.90742 17.3491 6.90742 16C6.90742 14.6509 5.81257 13.5573 4.46201 13.5573C3.11145 13.5573 2.0166 14.6509 2.0166 16C2.0166 17.3491 3.11145 18.4428 4.46201 18.4428Z" fill="white"/>
-                      <script xmlns=""/></svg>
-                  </icon>
-                </button>
-                <div class="absolute top-full left-0 bg-Color-Palette-Dark-Unit-BG-Hover z-10 opacity-0 invisible -translate-y-2.5 transition-all duration-300 ease-in-out dropdown-menu whitespace-nowrap rounded-lg ">
-                  <button class="w-full h-10 rounded-lg flex justify-start items-center gap-2.5 dropdown-menu hover:bg-[#3C4A56] tracking-tight duration-300 ease-in-out px-4 py-6">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 25" fill="none">
-                      <path d="M12 3.5H5C4.46957 3.5 3.96086 3.71071 3.58579 4.08579C3.21071 4.46086 3 4.96957 3 5.5V19.5C3 20.0304 3.21071 20.5391 3.58579 20.9142C3.96086 21.2893 4.46957 21.5 5 21.5H19C19.5304 21.5 20.0391 21.2893 20.4142 20.9142C20.7893 20.5391 21 20.0304 21 19.5V12.5" stroke="#E3E3E3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                      <path d="M18.375 3.125C18.7728 2.72717 19.3124 2.50368 19.875 2.50368C20.4376 2.50368 20.9772 2.72717 21.375 3.125C21.7728 3.52282 21.9963 4.06239 21.9963 4.625C21.9963 5.18761 21.7728 5.72717 21.375 6.125L12.362 15.139C12.1246 15.3762 11.8312 15.5499 11.509 15.644L8.636 16.484C8.54995 16.5091 8.45874 16.5106 8.37191 16.4884C8.28508 16.4661 8.20583 16.4209 8.14245 16.3576C8.07907 16.2942 8.03389 16.2149 8.01165 16.1281C7.9894 16.0413 7.9909 15.95 8.016 15.864L8.856 12.991C8.95053 12.669 9.12454 12.3761 9.362 12.139L18.375 3.125Z" stroke="#E3E3E3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                    <span class="text-Color-Palette-Dark-Base-Primary-Gray-1 no-underline font-['PingFang_SC'] text-Color-Palette-Dark-White ">重命名</a>
-                  </button>
+            </button>
 
-                  <button class="w-full h-10 rounded-lg flex justify-start items-center gap-2.5 dropdown-menu hover:bg-[#3C4A56] tracking-tight duration-300 ease-in-out px-4 py-6">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 25" fill="none" class="text-Typography-Dark-Error">
-                    <path d="M3 6.5H21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M19 6.5V20.5C19 21.5 18 22.5 17 22.5H7C6 22.5 5 21.5 5 20.5V6.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M8 6.5V4.5C8 3.5 9 2.5 10 2.5H14C15 2.5 16 3.5 16 4.5V6.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M10 11.5V17.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M14 11.5V17.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                    <span class="block text-Typography-Dark-Error no-underline font-['PingFang_SC'] text-Color-Palette-Dark-Error">删除项目</span>
-                  </button>
-                </div>
+            {% for project in projects %}
+            <!-- 项目卡片 -->
+            <div class="w-[465px] h-[356px] bg-Color-Palette-Dark-Unit-BG-2 rounded-lg inline-flex flex-col justify-start items-start gap-4 cursor-pointer" onclick="navigateToProject({{ project.id }})" data-project-id="{{ project.id }}">
+              <div class="flex flex-col justify-start items-start overflow-hidden rounded-t-lg group">
+                <img class="w-[465px] h-[266px] transition-all duration-300 group-hover:scale-105 object-cover project-cover-image" src="{{ url_for('static', filename=project.cover_image_url) }}" />
+              </div>
               
+              <div class="self-stretch px-6 inline-flex justify-between items-center">
+                <div class="flex flex-col gap-1">
+                  <div class="justify-start text-Typography-Dark-Base-Primary-Gray-1 text-xl font-semibold font-['PingFang_SC']">
+                    {{ project.name }}
+                  </div>
+                  <div class="flex justify-start items-center">
+                    <div class="justify-start text-Typography-Dark-Highlight-Primary text-base font-semibold font-['PingFang_SC']">
+                      更新时间 · 
+                    </div>
+                    <div class="justify-start text-Typography-Dark-Highlight-Primary text-base font-semibold font-['PingFang_SC']">
+                      {{ project.updated_at.strftime('%Y-%m-%d %H:%M') }}
+                    </div>
+                  </div>
+                </div>
+                <div class="relative inline-block">
+                  <button class="w-10 h-10 rounded-[999px] flex justify-center items-center gap-2.5 dropdown-toggle hover:bg-Color-Palette-Dark-Unit-BG-Hover tracking-tight duration-300 ease-in-out" onclick="event.stopPropagation();">
+                    <icon class="w-8 h-8 relative">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none"><script xmlns=""/>
+                        <path d="M16.0166 18.4428C17.3672 18.4428 18.462 17.3491 18.462 16C18.462 14.6509 17.3672 13.5573 16.0166 13.5573C14.666 13.5573 13.5712 14.6509 13.5712 16C13.5712 17.3491 14.666 18.4428 16.0166 18.4428Z" fill="white"/>
+                        <path d="M27.5712 18.4428C28.9218 18.4428 30.0166 17.3491 30.0166 16C30.0166 14.6509 28.9218 13.5573 27.5712 13.5573C26.2206 13.5573 25.1258 14.6509 25.1258 16C25.1258 17.3491 26.2206 18.4428 27.5712 18.4428Z" fill="white"/>
+                        <path d="M4.46201 18.4428C5.81257 18.4428 6.90742 17.3491 6.90742 16C6.90742 14.6509 5.81257 13.5573 4.46201 13.5573C3.11145 13.5573 2.0166 14.6509 2.0166 16C2.0166 17.3491 3.11145 18.4428 4.46201 18.4428Z" fill="white"/>
+                        <script xmlns=""/></svg>
+                    </icon>
+                  </button>
+                  <div class="absolute top-full left-0 bg-Color-Palette-Dark-Unit-BG-Hover z-10 opacity-0 invisible -translate-y-2.5 transition-all duration-300 ease-in-out dropdown-menu whitespace-nowrap rounded-lg ">
+                    <button class="w-full h-10 rounded-lg flex justify-start items-center gap-2.5 dropdown-menu hover:bg-[#3C4A56] tracking-tight duration-300 ease-in-out px-4 py-6" onclick="event.stopPropagation();">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 25" fill="none">
+                        <path d="M12 3.5H5C4.46957 3.5 3.96086 3.71071 3.58579 4.08579C3.21071 4.46086 3 4.96957 3 5.5V19.5C3 20.0304 3.21071 20.5391 3.58579 20.9142C3.96086 21.2893 4.46957 21.5 5 21.5H19C19.5304 21.5 20.0391 21.2893 20.4142 20.9142C20.7893 20.5391 21 20.0304 21 19.5V12.5" stroke="#E3E3E3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M18.375 3.125C18.7728 2.72717 19.3124 2.50368 19.875 2.50368C20.4376 2.50368 20.9772 2.72717 21.375 3.125C21.7728 3.52282 21.9963 4.06239 21.9963 4.625C21.9963 5.18761 21.7728 5.72717 21.375 6.125L12.362 15.139C12.1246 15.3762 11.8312 15.5499 11.509 15.644L8.636 16.484C8.54995 16.5091 8.45874 16.5106 8.37191 16.4884C8.28508 16.4661 8.20583 16.4209 8.14245 16.3576C8.07907 16.2942 8.03389 16.2149 8.01165 16.1281C7.9894 16.0413 7.9909 15.95 8.016 15.864L8.856 12.991C8.95053 12.669 9.12454 12.3761 9.362 12.139L18.375 3.125Z" stroke="#E3E3E3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                      <span class="text-Color-Palette-Dark-Base-Primary-Gray-1 no-underline font-['PingFang_SC'] text-Color-Palette-Dark-White z-10 ">重命名</span>
+                    </button>
+
+                    <button class="w-full h-10 rounded-lg flex justify-start items-center gap-2.5 dropdown-menu hover:bg-[#3C4A56] tracking-tight duration-300 ease-in-out px-4 py-6" onclick="event.stopPropagation();">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 25" fill="none" class="text-Typography-Dark-Error">
+                      <path d="M3 6.5H21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M19 6.5V20.5C19 21.5 18 22.5 17 22.5H7C6 22.5 5 21.5 5 20.5V6.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M8 6.5V4.5C8 3.5 9 2.5 10 2.5H14C15 2.5 16 3.5 16 4.5V6.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M10 11.5V17.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M14 11.5V17.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                      <span class="block text-Typography-Dark-Error no-underline font-['PingFang_SC'] text-Color-Palette-Dark-Error z-10">删除项目</span>
+                    </button>
+                  </div>
+                
+                </div>
               </div>
             </div>
-          </div>
+            {% endfor %}
 
+          </div>
         </div>
         
         <!-- 全部作品 -->
-         <div id="allWorks" class="w-full self-stretch flex-col gap-8" style="display: none;">
-          <div class="w-full self-stretch bg-Color-Palette-Dark-Unit-BG-2 rounded-xl inline-flex justify-start items-start overflow-hidden" >
-            <div class="inline-flex flex-col justify-start items-start overflow-hidden">
-              <img class="w-[542px] h-80" src="https://placehold.co/542x320" />
-            </div>
-            <div class="flex-1 h-80 p-7 inline-flex flex-col justify-between items-start">
-              <div class="self-stretch p-4 bg-Color-Palette-Dark-Unit-BG rounded-xl inline-flex justify-between items-center overflow-hidden">
-                <button data-svg-wrapper class="bg-Color-Palette-Dark-Unit-BG-2 hover:bg-Color-Palette-Dark-Unit-BG-Hover rounded-[999px]">
-                <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M17.5235 21.5458L11 15L17.5235 8.45418C17.8613 8.11526 18.4089 8.11526 18.7467 8.45418C19.0844 8.7931 19.0844 9.3426 18.7467 9.68152L13.3259 15.0018L18.7467 20.3185C19.0844 20.6574 19.0844 21.2069 18.7467 21.5458C18.4089 21.8847 17.8613 21.8847 17.5235 21.5458Z" fill="#576776"/>
-                </svg>
-                </button>
-                <div class=" flex justify-start items-center gap-4 overflow-hidden">
-                  <img class="w-[245px] h-[140px] rounded-md border-2 border-indigo-400" src="https://placehold.co/245x140" />
-                  <img class="w-[245px] h-[140px] rounded-md" src="https://placehold.co/245x140" />
-                  <img class="w-[245px] h-[140px] rounded-md" src="https://placehold.co/245x140" />
-                  <img class="w-[245px] h-[140px] rounded-md" src="https://placehold.co/245x140" />
-                </div>
-                <button data-svg-wrapper>
-                <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect width="30" height="30" rx="15" fill="#262C36"/>
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M12.4765 8.74298L19 15L12.4765 21.257C12.1387 21.581 11.5911 21.581 11.2533 21.257C10.9156 20.9331 10.9156 20.4078 11.2533 20.0838L16.6741 14.9983L11.2533 9.91617C10.9156 9.5922 10.9156 9.06694 11.2533 8.74298C11.5911 8.41901 12.1387 8.41901 12.4765 8.74298Z" fill="#576776"/>
-                </svg>
-                </button>
+         <div id="allWorks" class="w-full self-stretch flex-col gap-16 overflow-y-auto custom-scrollbar h-full flex-1" style="display: none;">
+          <div class="inline-flex justify-start items-start gap-16 flex-col w-full pr-2">
+            {% for project in projects %}
+            <div class="w-full self-stretch bg-Color-Palette-Dark-Unit-BG-2 rounded-xl inline-flex justify-start items-start overflow-hidden" data-project-id="{{ project.id }}">
+              <div class="inline-flex flex-col justify-start items-start overflow-hidden">
+                <img class="w-[542px] h-80 object-cover project-cover-image" src="{{ url_for('static', filename=project.cover_image_url) }}" />
               </div>
-              <div class="self-stretch inline-flex justify-between items-center">
-                <div class="w-[460px] flex justify-start items-center gap-9">
-                  <div class="inline-flex flex-col justify-start items-start gap-2">
-                    <div class="inline-flex justify-center items-center gap-4">
-                      <div class="justify-start text-Typography-Dark-Base-Primary-Gray-1 text-2xl font-semibold font-['PingFang_SC']">静思倚墙</div>
-                      <div class="px-3 py-1.5 bg-Color-Palette-Dark-Dash rounded-[999px] flex justify-center items-center gap-2.5">
-                        <div class="justify-start text-Typography-Dark-Base-Primary-Gray-1 text-sm font-semibold font-['PingFang_SC']">影视 16:9</div>
+              <div class="flex-1 h-80 p-7 inline-flex flex-col justify-between items-start">
+                <div class="self-stretch p-4 bg-Color-Palette-Dark-Unit-BG rounded-xl inline-flex justify-between items-center overflow-hidden">
+                  <button data-svg-wrapper class="bg-Color-Palette-Dark-Unit-BG-2 hover:bg-Color-Palette-Dark-Unit-BG-Hover rounded-[999px] transition-all duration-300 ease-in-out" onclick="switchImage({{ project.id }}, 'prev', event)">
+                  <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M17.5235 21.5458L11 15L17.5235 8.45418C17.8613 8.11526 18.4089 8.11526 18.7467 8.45418C19.0844 8.7931 19.0844 9.3426 18.7467 9.68152L13.3259 15.0018L18.7467 20.3185C19.0844 20.6574 19.0844 21.2069 18.7467 21.5458C18.4089 21.8847 17.8613 21.8847 17.5235 21.5458Z" fill="#576776"/>
+                  </svg>
+                  </button>
+                  <div class="flex justify-start items-center gap-4 overflow-hidden" data-storyboard-container="{{ project.id }}">
+                    {% for storyboard in project.storyboards[:4] %}
+                    <img class="object-cover w-[245px] h-[140px] rounded-md border-2 border-transparent hover:border-indigo-400/30 transition-colors duration-300 cursor-pointer {% if loop.first %}!border-indigo-400{% endif %}" 
+                         src="{{ url_for('static', filename=(storyboard.images|sort(attribute='id', reverse=true)|first).image_url if storyboard.images else '') }}"
+                         data-image-index="{{ loop.index0 }}"
+                         data-storyboard-id="{{ storyboard.id }}"
+                         onclick="selectImage({{ project.id }}, {{ loop.index0 }}, event)" />
+                    {% endfor %}
+                  </div>
+                  <button data-svg-wrapper class="bg-Color-Palette-Dark-Unit-BG-2 hover:bg-Color-Palette-Dark-Unit-BG-Hover rounded-[999px] transition-all duration-300 ease-in-out" onclick="switchImage({{ project.id }}, 'next', event)">
+                  <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M12.4765 8.74298L19 15L12.4765 21.257C12.1387 21.581 11.5911 21.581 11.2533 21.257C10.9156 20.9331 10.9156 20.4078 11.2533 20.0838L16.6741 14.9983L11.2533 9.91617C10.9156 9.5922 10.9156 9.06694 11.2533 8.74298C11.5911 8.41901 12.1387 8.41901 12.4765 8.74298Z" fill="#576776"/>
+                  </svg>
+                  </button>
+                </div>
+                <div class="self-stretch inline-flex justify-between items-center">
+                  <div class="w-[460px] flex justify-start items-center gap-9">
+                    <div class="inline-flex flex-col justify-start items-start gap-2">
+                      <div class="inline-flex justify-center items-center gap-4">
+                        <div class="justify-start text-Typography-Dark-Base-Primary-Gray-1 text-2xl font-semibold font-['PingFang_SC']">{{project.name}}</div>
+                        <div class="px-3 py-1.5 bg-Color-Palette-Dark-Dash rounded-[999px] flex justify-center items-center gap-2.5">
+                          <div class="justify-start text-Typography-Dark-Base-Primary-Gray-1 text-sm font-semibold font-['PingFang_SC']">{{project.storyboard_type}}</div>
+                        </div>
+                      </div>
+                      <div class="justify-start text-Typography-Dark-Highlight-Primary text-base font-semibold font-['PingFang_SC']">{{project.updated_at.strftime('%Y-%m-%d %H:%M')}}</div>
+                    </div>
+                    <div class="w-56 self-stretch px-4 py-2 bg-Color-Palette-Dark-Unit-BG rounded-xl backdrop-blur-[2px] flex justify-start items-center gap-4">
+                      <div class="text-center justify-center text-Typography-Dark-Base-Primary-Gray-1 text-lg font-semibold font-['PingFang_SC']">参演</div>
+                      <div class="flex justify-start items-center gap-3">
+                        <img class="w-8 h-8 rounded" src="https://placehold.co/34x34" />
+                        <img class="w-8 h-8 rounded" src="https://placehold.co/34x34" />
                       </div>
                     </div>
-                    <div class="justify-start text-Typography-Dark-Highlight-Primary text-base font-semibold font-['PingFang_SC']">2025-03-11 23:23</div>
                   </div>
-                  <div class="w-56 self-stretch px-4 py-2 bg-Color-Palette-Dark-Unit-BG rounded-xl backdrop-blur-[2px] flex justify-start items-center gap-4">
-                    <div class="text-center justify-center text-Typography-Dark-Base-Primary-Gray-1 text-lg font-semibold font-['PingFang_SC']">参演</div>
-                    <div class="flex justify-start items-center gap-3">
-                      <img class="w-8 h-8 rounded" src="https://placehold.co/34x34" />
-                      <img class="w-8 h-8 rounded" src="https://placehold.co/34x34" />
+                  <button class="px-4 py-2 bg-gradient-to-br from-fuchsia-500 to-violet-600 rounded-[900px] flex justify-center items-center gap-3" onclick="navigateToProject({{ project.id }})" data-project-id="{{ project.id }}">
+                    <div class="justify-start text-Typography-Dark-Base-Primary-Gray-1 text-l font-semibold font-['PingFang_SC']">开始编辑</div>
+                    <div data-svg-wrapper>
+                    <svg width="14" height="10" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M-0.000854492 5.00002C-0.000854492 4.86741 0.0518239 4.74024 0.145592 4.64647C0.23936 4.5527 0.366537 4.50002 0.499146 4.50002H12.2921L9.14515 1.35402C9.05126 1.26013 8.99851 1.1328 8.99851 1.00002C8.99851 0.867245 9.05126 0.739908 9.14515 0.646021C9.23903 0.552134 9.36637 0.49939 9.49915 0.49939C9.63192 0.49939 9.75926 0.552134 9.85315 0.646021L13.8531 4.64602C13.8997 4.69247 13.9367 4.74764 13.9619 4.80839C13.9871 4.86913 14 4.93425 14 5.00002C14 5.06579 13.9871 5.13091 13.9619 5.19165C13.9367 5.2524 13.8997 5.30758 13.8531 5.35402L9.85315 9.35402C9.75926 9.44791 9.63192 9.50065 9.49915 9.50065C9.36637 9.50065 9.23903 9.44791 9.14515 9.35402C9.05126 9.26013 8.99851 9.1328 8.99851 9.00002C8.99851 8.86725 9.05126 8.73991 9.14515 8.64602L12.2921 5.50002H0.499146C0.366537 5.50002 0.23936 5.44734 0.145592 5.35357C0.0518239 5.25981 -0.000854492 5.13263 -0.000854492 5.00002Z" fill="#E3E3E3"/>
+                    </svg>
                     </div>
-                  </div>
+                  </button>
                 </div>
-                <button class="px-4 py-2 bg-gradient-to-br from-fuchsia-500 to-violet-600 rounded-[900px] flex justify-center items-center gap-3">
-                  <div class="justify-start text-Typography-Dark-Base-Primary-Gray-1 text-l font-semibold font-['PingFang_SC']">开始编辑</div>
-                  <div data-svg-wrapper>
-                  <svg width="14" height="10" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path fill-rule="evenodd" clip-rule="evenodd" d="M-0.000854492 5.00002C-0.000854492 4.86741 0.0518239 4.74024 0.145592 4.64647C0.23936 4.5527 0.366537 4.50002 0.499146 4.50002H12.2921L9.14515 1.35402C9.05126 1.26013 8.99851 1.1328 8.99851 1.00002C8.99851 0.867245 9.05126 0.739908 9.14515 0.646021C9.23903 0.552134 9.36637 0.49939 9.49915 0.49939C9.63192 0.49939 9.75926 0.552134 9.85315 0.646021L13.8531 4.64602C13.8997 4.69247 13.9367 4.74764 13.9619 4.80839C13.9871 4.86913 14 4.93425 14 5.00002C14 5.06579 13.9871 5.13091 13.9619 5.19165C13.9367 5.2524 13.8997 5.30758 13.8531 5.35402L9.85315 9.35402C9.75926 9.44791 9.63192 9.50065 9.49915 9.50065C9.36637 9.50065 9.23903 9.44791 9.14515 9.35402C9.05126 9.26013 8.99851 9.1328 8.99851 9.00002C8.99851 8.86725 9.05126 8.73991 9.14515 8.64602L12.2921 5.50002H0.499146C0.366537 5.50002 0.23936 5.44734 0.145592 5.35357C0.0518239 5.25981 -0.000854492 5.13263 -0.000854492 5.00002Z" fill="#E3E3E3"/>
-                  </svg>
-                  </div>
-                </button>
               </div>
-            </div>
-          </div>
-
-          
+            </div>    
+            {% endfor %}    
+          </div>  
         </div>
       </container>
     </div>
@@ -624,5 +650,90 @@
     document.getElementById('myWorksHeader').style.display = 'block';
   }
   </script>
+
+<script>
+function navigateToProject(projectId) {
+  // 添加过渡动画效果
+  const card = event.currentTarget;
+  card.style.transform = 'scale(0.98)';
+  card.style.opacity = '0.8';
+  
+  // 延迟跳转以显示动画效果
+  setTimeout(() => {
+    window.location.href = `/storyboard/${projectId}`;
+  }, 150);
+}
+
+</script>
+
+<script>
+// 图片切换功能
+function switchImage(projectId, direction, event) {
+  event.stopPropagation(); // 阻止事件冒泡
+  
+  const container = document.querySelector(`[data-storyboard-container="${projectId}"]`);
+  const images = container.querySelectorAll('img');
+  const totalImages = images.length;
+  
+  // 找到当前选中的图片索引
+  let currentIndex = 0;
+  images.forEach((img, index) => {
+    if (img.classList.contains('border-2')) {
+      currentIndex = index;
+    }
+  });
+  
+  // 计算新的索引
+  let newIndex;
+  if (direction === 'next') {
+    newIndex = (currentIndex + 1) % totalImages;
+  } else {
+    newIndex = (currentIndex - 1 + totalImages) % totalImages;
+  }
+  
+  updateSelectedImage(projectId, newIndex);
+}
+
+// 直接点击图片选择
+function selectImage(projectId, imageIndex, event) {
+  event.stopPropagation(); // 阻止事件冒泡
+  updateSelectedImage(projectId, imageIndex);
+}
+
+// 更新选中的图片和封面
+function updateSelectedImage(projectId, newIndex) {
+  const container = document.querySelector(`[data-storyboard-container="${projectId}"]`);
+  const images = container.querySelectorAll('img');
+  
+  // 移除所有图片的高亮边框
+  images.forEach(img => {
+    img.classList.remove('!border-indigo-400');
+  });
+  
+  // 给新选中的图片添加高亮边框
+  images[newIndex].classList.add('!border-indigo-400');
+  
+  // 更新项目封面图片
+  const selectedImage = images[newIndex];
+  
+  // 更新两个视图中的封面图片
+  const projectCard = document.querySelector(`[data-project-id="${projectId}"]`);
+  if (projectCard) {
+    const coverImage = projectCard.querySelector('.project-cover-image');
+    if (coverImage) {
+      coverImage.src = selectedImage.src;
+    }
+  }
+  
+  // 更新列表视图中的封面图片
+  const listViewCard = document.querySelector(`#allWorks [data-project-id="${projectId}"]`);
+  if (listViewCard) {
+    const listCoverImage = listViewCard.querySelector('.project-cover-image');
+    if (listCoverImage) {
+      listCoverImage.src = selectedImage.src;
+    }
+  }
+}
+</script>
 </body>
 </html>

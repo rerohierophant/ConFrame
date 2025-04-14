@@ -4,45 +4,11 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>panorama</title>
-	<link rel="stylesheet" href="../static/css/output.css" >
-	<link rel="stylesheet" href="../static/css/index.css" />
-	<script src="../static/js/screenShotPlugin.umd.js"></script>
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/output.css') }}" >
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}" />
+	<script src="{{ url_for('static', filename='js/screenShotPlugin.umd.js') }}"></script>
 </head>
 <body>
-	<script type="text/javascript">
-
-		// 截图取消时的回调函数
-		const closeFn = ()=>{
-			console.log("截图窗口关闭");
-		}
-    const config = {
-        enableWebRtc: false,
-        cutBoxBdColor: "#7B57E0",
-				clickCutFullScreen: true,
-				hiddenToolIco: {
-					square: false,
-					round: true,
-					rightTop: true,
-					brush: true,
-					mosaicPen: true,
-					text: true,
-					save: false
-				},
-				completeCallback: ({ base64, cutInfo }) => {
-					console.log(base64, cutInfo);
-					// 对号图标点击后会将图片的base64地址与裁剪信息回传给你定义的函数，
-					// 通过传入completeCallback属性来获取回调函数返回的数据，
-					// 如果不传的话则会将这些数据放到sessionStorage中。
-					// 如果没有指定回调函数的话，可以从sessionStorage中获取
-					// sessionStorage.getItem("screenShotImg");
-				},
-				closeCallback: closeFn
-    };
-
-    const changeScreenShot = () => {
-        new screenShotPlugin(config);
-    }
-</script>
 
 	<div id="viewer" style="width: 100vw; height: 100vh;"></div>
 	<div id="sidebar" class="fixed right-[-80px] top-1/2 transform -translate-y-1/2 flex-col px-4 py-4 bg-neutral-950 bg-opacity-70 rounded-xl inline-flex justify-start items-center gap-6 overflow-hidden transition-transform duration-300">
@@ -86,31 +52,103 @@
 
 	<header id="header" class="fixed left-0 top-0 w-full p-8 bg-Color-Palette-Dark-Unit-BG inline-flex justify-between items-center transition-transform duration-300">
 		<div class="flex justify-start items-center gap-8">
-			<div data-svg-wrapper data-icon="Arrow right">
-			<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-			<path fill-rule="evenodd" clip-rule="evenodd" d="M18.3897 23.837L10.5071 15.9666L18.3897 8.0962C18.7979 7.68869 19.4596 7.68869 19.8677 8.0962C20.2759 8.5037 20.2759 9.16439 19.8677 9.5719L13.3175 15.9687L19.8677 22.3613C20.2759 22.7688 20.2759 23.4295 19.8677 23.837C19.4596 24.2445 18.7979 24.2445 18.3897 23.837Z" fill="#576776"/>
-			</svg>
-			</div>
-			<div class="justify-start text-Typography-Dark-Base-Primary-Gray-1 text-xl font-semibold font-['PingFang_SC']">新项目-未命名</div>
+			<a href="{{ url_for('storyboard_edit', project_id=project.id) }}" class="hover:bg-Color-Palette-Dark-Unit-BG-Hover transition-all duration-300 ease-in-out rounded-lg p-2">
+				<div data-svg-wrapper data-icon="Arrow right">
+				<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<path fill-rule="evenodd" clip-rule="evenodd" d="M18.3897 23.837L10.5071 15.9666L18.3897 8.0962C18.7979 7.68869 19.4596 7.68869 19.8677 8.0962C20.2759 8.5037 20.2759 9.16439 19.8677 9.5719L13.3175 15.9687L19.8677 22.3613C20.2759 22.7688 20.2759 23.4295 19.8677 23.837C19.4596 24.2445 18.7979 24.2445 18.3897 23.837Z" fill="#576776"/>
+				</svg>
+				</div>
+			</a>
+			<div class="justify-start text-Typography-Dark-Base-Primary-Gray-1 text-xl font-semibold font-['PingFang_SC']">{{ project.name }}</div>
 			<div class="justify-start text-Typography-Dark-Base-Primary-Gray-1 text-xl font-semibold font-['PingFang_SC']">></div>
-			<div class="justify-start text-Typography-Dark-Base-Primary-Gray-1 text-xl font-semibold font-['PingFang_SC']">镜头1</div>
+			<div class="justify-start text-Typography-Dark-Base-Primary-Gray-1 text-xl font-semibold font-['PingFang_SC']">{{ storyboard.name }}</div>
 		</div>
 	
 		<div class="w-52 flex justify-start items-center gap-5">
 			<img class="w-12 h-12 rounded-[133.33px]" src="https://placehold.co/50x50" />
 			<div class="inline-flex flex-col justify-start items-start gap-1">
-			<div class="justify-start text-Typography-Dark-Base-Primary-Gray-1 text-lg font-medium font-['PingFang_SC']">酸菜且多余</div>
-			<div class="justify-start text-Typography-Dark-Base-Secondary-Gray-2 text-xs font-medium font-['PingFang_SC']">wtl02@gmail.com</div>
+			<div class="justify-start text-Typography-Dark-Base-Primary-Gray-1 text-lg font-medium font-['PingFang_SC']">{{ username }}</div>
+			<div class="justify-start text-Typography-Dark-Base-Secondary-Gray-2 text-xs font-medium font-['PingFang_SC']">{{ email }}</div>
 			</div>
 		</div>
 	</header>
 	<!-- 定义模块导入映射，指定各模块的加载路径 -->
 
+	<div id="page-data" 
+		data-project-id="{{ project.id }}" 
+		data-storyboard-id="{{ storyboard.id }}"
+		style="display: none;">
+	</div>
+
+	<script type="text/javascript">
+		// 从HTML元素中获取数据
+		const pageData = document.getElementById('page-data');
+    const PROJECT_ID = pageData.dataset.projectId;
+    const STORYBOARD_ID = pageData.dataset.storyboardId;
+		// 截图取消时的回调函数
+		const closeFn = ()=>{
+			console.log("截图窗口关闭");
+		}
+    const config = {
+        enableWebRtc: false,
+        cutBoxBdColor: "#7B57E0",
+				clickCutFullScreen: true,
+				hiddenToolIco: {
+					square: false,
+					round: true,
+					rightTop: true,
+					brush: true,
+					mosaicPen: true,
+					text: true,
+					save: false
+				},
+				completeCallback: ({ base64, cutInfo }) => {
+					console.log(base64, cutInfo);
+					// 对号图标点击后会将图片的base64地址与裁剪信息回传给你定义的函数，
+					// 通过传入completeCallback属性来获取回调函数返回的数据，
+					// 如果不传的话则会将这些数据放到sessionStorage中。
+					// 如果没有指定回调函数的话，可以从sessionStorage中获取
+					// sessionStorage.getItem("screenShotImg");
+					const base64Data = base64.replace(/^data:image\/\w+;base64,/, "");
+					fetch('/save_screenshot', {
+						method: 'POST',
+						headers: {
+							'Content-Type': 'application/json',
+						},
+						body: JSON.stringify({ 
+							base64_data: base64Data,
+							project_id: PROJECT_ID,
+							storyboard_id: STORYBOARD_ID
+						})
+					})
+					.then(response => response.json())
+					.then(data => {
+							if(data.success) {
+									// 保存成功后跳转回storyboard-edit页面
+									window.location.href = `/storyboard/${data.project_id}`;
+							} else {
+									alert('保存截图失败：' + data.message);
+							}
+					})
+					.catch(error => {
+							console.error('Error:', error);
+							alert('保存截图时发生错误');
+					});
+
+				},
+				closeCallback: closeFn
+    };
+
+    const changeScreenShot = () => {
+        new screenShotPlugin(config);
+    }
+	</script>
+
 	<script type="importmap">
     {
 			"imports": {
 					"three": "https://cdn.jsdelivr.net/npm/three/build/three.module.js",
-					"@photo-sphere-viewer/core": "../static/js/index.module.js"
+					"@photo-sphere-viewer/core": "{{ url_for('static', filename='js/index.module.js') }}"
 			}
     }
 	</script>
@@ -120,7 +158,7 @@
 
 		const viewer = new Viewer({
 				container: document.querySelector('#viewer'),
-				panorama: '../static/img/panorama.png',
+				panorama: "{{background_url}}",
 				caption: '请在侧边栏选择截取背景参考图',
 				// description: 'panorama',
 				defaultZoomLvl:0,
@@ -157,7 +195,7 @@
 		// 创建图片元素
 		const previewImage = document.createElement('img');
 		previewImage.id = 'preview-image';
-		previewImage.src = '../static/img/mask/mask.png'; // 替换为你的图片路径
+		previewImage.src = "{{ peoplemask_url }}"; // 替换为你的图片路径
 		previewImage.classList.add('fixed', 'top-1/2', 'left-1/2', '-translate-x-1/2', '-translate-y-1/2', 'h-screen', 'opacity-0', 'transition-opacity', 'duration-1000', 'ease-in-out');
 		document.body.appendChild(previewImage);
 

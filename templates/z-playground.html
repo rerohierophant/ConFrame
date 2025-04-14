@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html class="h-full">
+  <head>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Scrollable Project List</title>
+  </head>
+  <body class="h-full m-0 p-0 overflow-hidden">
+    <div class="h-full flex flex-col bg-gray-100 overflow-hidden">
+      <!-- 标题区域 -->
+      <div class="px-8 py-6 text-2xl font-bold text-gray-800 border-b">
+        我的项目
+      </div>
+
+      <!-- 滚动区域 -->
+      <div class="flex-1 overflow-y-auto px-8 py-6">
+        <div class="flex-wrap">
+          <!-- 项目卡片 -->
+          <!-- 假设很多项目卡片 -->
+          <template id="project-card">
+            <div class="bg-white p-4 rounded-lg shadow border hover:border-blue-400 transition">
+              <div class="text-lg font-semibold text-gray-800 truncate">项目名称</div>
+              <div class="text-sm text-gray-500 truncate">项目描述</div>
+            </div>
+          </template>
+
+          <!-- 插入很多卡片模拟滚动 -->
+          <!-- JS生成也可以，下面用手写复制展示 -->
+          <!-- 共 20 个卡片 -->
+          <div class="bg-white p-4 rounded-lg shadow border">
+            <div class="text-lg font-semibold text-gray-800 truncate">项目 1</div>
+            <div class="text-sm text-gray-500 truncate">这是一个描述</div>
+          </div>
+          <div class="bg-white p-4 rounded-lg shadow border">
+            <div class="text-lg font-semibold text-gray-800 truncate">项目 2</div>
+            <div class="text-sm text-gray-500 truncate">这是一个描述</div>
+          </div>
+          <!-- 你可以复制更多卡片，直到能滚动 -->
+          <!-- 快速粘贴重复项 -->
+          <!-- ...复制直到够长 -->
+          <div class="bg-white p-4 rounded-lg shadow border">
+            <div class="text-lg font-semibold text-gray-800 truncate">项目 3</div>
+            <div class="text-sm text-gray-500 truncate">这是一个描述</div>
+          </div>
+          <!-- 继续粘贴直到看见滚动条 -->
+          <div class="bg-white p-4 rounded-lg shadow border">
+            <div class="text-lg font-semibold text-gray-800 truncate">项目 4</div>
+            <div class="text-sm text-gray-500 truncate">这是一个描述</div>
+          </div>
+
+          <div class="bg-white p-4 rounded-lg shadow border">
+            <div class="text-lg font-semibold text-gray-800 truncate">项目 3</div>
+            <div class="text-sm text-gray-500 truncate">这是一个描述</div>
+          </div>
+          <!-- 继续粘贴直到看见滚动条 -->
+          <div class="bg-white p-4 rounded-lg shadow border">
+            <div class="text-lg font-semibold text-gray-800 truncate">项目 4</div>
+            <div class="text-sm text-gray-500 truncate">这是一个描述</div>
+          </div>
+
+          <div class="bg-white p-4 rounded-lg shadow border">
+            <div class="text-lg font-semibold text-gray-800 truncate">项目 3</div>
+            <div class="text-sm text-gray-500 truncate">这是一个描述</div>
+          </div>
+          <!-- 继续粘贴直到看见滚动条 -->
+          <div class="bg-white p-4 rounded-lg shadow border">
+            <div class="text-lg font-semibold text-gray-800 truncate">项目 4</div>
+            <div class="text-sm text-gray-500 truncate">这是一个描述</div>
+          </div>
+
+          <div class="bg-white p-4 rounded-lg shadow border">
+            <div class="text-lg font-semibold text-gray-800 truncate">项目 3</div>
+            <div class="text-sm text-gray-500 truncate">这是一个描述</div>
+          </div>
+          <!-- 继续粘贴直到看见滚动条 -->
+          <div class="bg-white p-4 rounded-lg shadow border">
+            <div class="text-lg font-semibold text-gray-800 truncate">项目 4</div>
+            <div class="text-sm text-gray-500 truncate">这是一个描述</div>
+          </div>
+
+          <div class="bg-white p-4 rounded-lg shadow border">
+            <div class="text-lg font-semibold text-gray-800 truncate">项目 3</div>
+            <div class="text-sm text-gray-500 truncate">这是一个描述</div>
+          </div>
+          <!-- 继续粘贴直到看见滚动条 -->
+          <div class="bg-white p-4 rounded-lg shadow border">
+            <div class="text-lg font-semibold text-gray-800 truncate">项目 4</div>
+            <div class="text-sm text-gray-500 truncate">这是一个描述</div>
+          </div>
+
+          <div class="bg-white p-4 rounded-lg shadow border">
+            <div class="text-lg font-semibold text-gray-800 truncate">项目 3</div>
+            <div class="text-sm text-gray-500 truncate">这是一个描述</div>
+          </div>
+          <!-- 继续粘贴直到看见滚动条 -->
+          <div class="bg-white p-4 rounded-lg shadow border">
+            <div class="text-lg font-semibold text-gray-800 truncate">项目 4</div>
+            <div class="text-sm text-gray-500 truncate">这是一个描述</div>
+          </div>
+
+          <div class="bg-white p-4 rounded-lg shadow border">
+            <div class="text-lg font-semibold text-gray-800 truncate">项目 3</div>
+            <div class="text-sm text-gray-500 truncate">这是一个描述</div>
+          </div>
+          <!-- 继续粘贴直到看见滚动条 -->
+          <div class="bg-white p-4 rounded-lg shadow border">
+            <div class="text-lg font-semibold text-gray-800 truncate">项目 4</div>
+            <div class="text-sm text-gray-500 truncate">这是一个描述</div>
+          </div>
+
+          <div class="bg-white p-4 rounded-lg shadow border">
+            <div class="text-lg font-semibold text-gray-800 truncate">项目 3</div>
+            <div class="text-sm text-gray-500 truncate">这是一个描述</div>
+          </div>
+          <!-- 继续粘贴直到看见滚动条 -->
+          <div class="bg-white p-4 rounded-lg shadow border">
+            <div class="text-lg font-semibold text-gray-800 truncate">项目 4</div>
+            <div class="text-sm text-gray-500 truncate">这是一个描述</div>
+          </div>
+
+          <div class="bg-white p-4 rounded-lg shadow border">
+            <div class="text-lg font-semibold text-gray-800 truncate">项目 3</div>
+            <div class="text-sm text-gray-500 truncate">这是一个描述</div>
+          </div>
+          <!-- 继续粘贴直到看见滚动条 -->
+          <div class="bg-white p-4 rounded-lg shadow border">
+            <div class="text-lg font-semibold text-gray-800 truncate">项目 4</div>
+            <div class="text-sm text-gray-500 truncate">这是一个描述</div>
+          </div>
+
+          <div class="bg-white p-4 rounded-lg shadow border">
+            <div class="text-lg font-semibold text-gray-800 truncate">项目 3</div>
+            <div class="text-sm text-gray-500 truncate">这是一个描述</div>
+          </div>
+          <!-- 继续粘贴直到看见滚动条 -->
+          <div class="bg-white p-4 rounded-lg shadow border">
+            <div class="text-lg font-semibold text-gray-800 truncate">项目 4</div>
+            <div class="text-sm text-gray-500 truncate">这是一个描述</div>
+          </div>
+          <!-- 继续... -->
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

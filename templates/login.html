@@ -25,40 +25,42 @@
 			</logobar>
 
 			<div class="self-stretch rounded-[9.60px] shadow-[0px_3.6000001430511475px_28.80000114440918px_0px_rgba(26,26,26,0.10)] flex flex-col justify-start items-start gap-9">
-				<div class="self-stretch flex flex-col justify-start items-start gap-2">
-					<div class="self-stretch px-4 inline-flex justify-start items-start">
-						<div class="justify-start text-Typography-Dark-Base-Secondary-Gray-2 text-l font-normal font-['PingFang_SC']">用户名</div>
-					</div>
-					<div class="relative w-full">
-						<input id="usernameInput" type="text" name="username" placeholder="请输入用户名" autocomplete="off" class="w-full self-stretch h-14 inline-flex justify-start items-center w-full px-4 py-2 bg-Color-Palette-Dark-Unit-BG rounded-lg text-Typography-Dark-Base-Primary-Gray-1 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-fuchsia-500">
-						<div id="clearIcon" class="absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer hidden" onclick="clearInput()">
-								<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-										<rect x="0.800049" y="0.745392" width="19.2" height="19.2" rx="9.6" fill="#262C36"/>
-										<path fill-rule="evenodd" clip-rule="evenodd" d="M7.02104 6.96639C6.72638 7.26104 6.72638 7.73878 7.02104 8.03344L9.33299 10.3454L7.02104 12.6573C6.72638 12.952 6.72638 13.4297 7.02104 13.7244C7.3157 14.0191 7.79344 14.0191 8.0881 13.7244L10.4 11.4124L12.712 13.7244C13.0067 14.0191 13.4844 14.0191 13.7791 13.7244C14.0737 13.4297 14.0737 12.952 13.7791 12.6573L11.4671 10.3454L13.7791 8.03344C14.0737 7.73878 14.0737 7.26104 13.7791 6.96639C13.4844 6.67173 13.0067 6.67173 12.712 6.96639L10.4 9.27834L8.0881 6.96639C7.79344 6.67173 7.3157 6.67173 7.02104 6.96639Z" fill="white"/>
-								</svg>
+				<form action="/" method="post" class="w-full">
+					<div class="self-stretch flex flex-col justify-start items-start gap-2">
+						<div class="self-stretch px-4 inline-flex justify-start items-start">
+							<div class="justify-start text-Typography-Dark-Base-Secondary-Gray-2 text-l font-normal font-['PingFang_SC']">用户名</div>
+						</div>
+						<div class="relative w-full">
+							<input id="usernameInput" type="text" name="username" placeholder="请输入用户名" autocomplete="off" class="w-full self-stretch h-14 inline-flex justify-start items-center w-full px-4 py-2 bg-Color-Palette-Dark-Unit-BG rounded-lg text-Typography-Dark-Base-Primary-Gray-1 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-fuchsia-500">
+							<div id="clearIcon" class="absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer hidden" onclick="clearInput()">
+									<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<rect x="0.800049" y="0.745392" width="19.2" height="19.2" rx="9.6" fill="#262C36"/>
+											<path fill-rule="evenodd" clip-rule="evenodd" d="M7.02104 6.96639C6.72638 7.26104 6.72638 7.73878 7.02104 8.03344L9.33299 10.3454L7.02104 12.6573C6.72638 12.952 6.72638 13.4297 7.02104 13.7244C7.3157 14.0191 7.79344 14.0191 8.0881 13.7244L10.4 11.4124L12.712 13.7244C13.0067 14.0191 13.4844 14.0191 13.7791 13.7244C14.0737 13.4297 14.0737 12.952 13.7791 12.6573L11.4671 10.3454L13.7791 8.03344C14.0737 7.73878 14.0737 7.26104 13.7791 6.96639C13.4844 6.67173 13.0067 6.67173 12.712 6.96639L10.4 9.27834L8.0881 6.96639C7.79344 6.67173 7.3157 6.67173 7.02104 6.96639Z" fill="white"/>
+									</svg>
+							</div>
 						</div>
 					</div>
-				</div>
 
-				<div class="self-stretch flex flex-col justify-start items-start gap-2">
-				<div class="self-stretch px-4 inline-flex justify-start items-start">
-					<div class="justify-start text-Typography-Dark-Base-Secondary-Gray-2 text-l font-normal font-['PingFang_SC']">邮箱</div>
-				</div>
-					<div class="relative w-full">
-							<input id="usernameInput2" type="text" name="email" placeholder="请输入邮箱" autocomplete="off" class="w-96 self-stretch h-14 inline-flex justify-start items-center w-full px-4 py-2 bg-Color-Palette-Dark-Unit-BG rounded-lg text-Typography-Dark-Base-Primary-Gray-1 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-fuchsia-500">
+					<div class="self-stretch flex flex-col justify-start items-start gap-2 mt-9">
+						<div class="self-stretch px-4 inline-flex justify-start items-start">
+							<div class="justify-start text-Typography-Dark-Base-Secondary-Gray-2 text-l font-normal font-['PingFang_SC']">邮箱</div>
+						</div>
+						<div class="relative w-full">
+							<input id="usernameInput2" type="email" name="email" placeholder="请输入邮箱" autocomplete="off" class="w-96 self-stretch h-14 inline-flex justify-start items-center w-full px-4 py-2 bg-Color-Palette-Dark-Unit-BG rounded-lg text-Typography-Dark-Base-Primary-Gray-1 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-fuchsia-500">
 							<div id="clearIcon2" class="absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer hidden" onclick="clearInput2()">
 									<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 											<rect x="0.800049" y="0.745392" width="19.2" height="19.2" rx="9.6" fill="#262C36"/>
 											<path fill-rule="evenodd" clip-rule="evenodd" d="M7.02104 6.96639C6.72638 7.26104 6.72638 7.73878 7.02104 8.03344L9.33299 10.3454L7.02104 12.6573C6.72638 12.952 6.72638 13.4297 7.02104 13.7244C7.3157 14.0191 7.79344 14.0191 8.0881 13.7244L10.4 11.4124L12.712 13.7244C13.0067 14.0191 13.4844 14.0191 13.7791 13.7244C14.0737 13.4297 14.0737 12.952 13.7791 12.6573L11.4671 10.3454L13.7791 8.03344C14.0737 7.73878 14.0737 7.26104 13.7791 6.96639C13.4844 6.67173 13.0067 6.67173 12.712 6.96639L10.4 9.27834L8.0881 6.96639C7.79344 6.67173 7.3157 6.67173 7.02104 6.96639Z" fill="white"/>
 									</svg>
 							</div>
+						</div>
 					</div>
-				</div>
-				<button class="self-stretch px-7 py-3 rounded-lg flex flex-col justify-center items-center transition-all duration-300 relative overflow-hidden hover:shadow-[0px_4px_30px_0px_rgba(255,0,255,0.3)]">
-					<div class="absolute inset-0 bg-gradient-to-br from-fuchsia-500 to-violet-600 transition-opacity duration-300"></div>
-					<div class="absolute inset-0 bg-gradient-to-br from-fuchsia-600 to-violet-700 opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
-					<div class="relative text-center justify-center text-white text-lg font-semibold font-['PingFang_SC']">登录</div>
-				</button>
+					<button type="submit" class="w-full self-stretch px-7 py-3 rounded-lg flex flex-col justify-center items-center transition-all duration-300 relative overflow-hidden hover:shadow-[0px_4px_30px_0px_rgba(255,0,255,0.3)] mt-9">
+						<div class="absolute inset-0 bg-gradient-to-br from-fuchsia-500 to-violet-600 transition-opacity duration-300"></div>
+						<div class="absolute inset-0 bg-gradient-to-br from-fuchsia-600 to-violet-700 opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
+						<div class="relative text-center justify-center text-white text-lg font-semibold font-['PingFang_SC']">登录</div>
+					</button>
+				</form>
 			</div>
 			<div class="w-96 justify-start text-stone-500 text-xs font-normal font-['PingFang_SC']">对于通过人工智能模型生成的脚本、图像，我们不能保证其内容的准确性和完整性，且生成信息不反映我们的立场或看法。</div>
 		</div>
